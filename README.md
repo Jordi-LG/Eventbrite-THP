@@ -1,24 +1,26 @@
-# README
+<h1> Eventbrite </h1>
+<h4>Façon THP</h4>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Lien Heroku: https://eventbritethps10.herokuapp.com/
 
-Things you may want to cover:
+* Etapes pour utiliser l'application en local:
+<code>Bundle install</code>
+<code>rails db:create</code>
+(=> Au cas ou pb de BDD)
+<code>rails db:migrate</code>
+<code>rails db:seed</code>
+Aller sur localhost:3000
 
-* Ruby version
+Si pb dans la DBB ou seed:
+<code>rails db:setup</code>
 
-* System dependencies
+Partie User, ce qu'il est possible de faire:
+Création user
+Redemander le password
+(la modif ne fonctionne pas, vient de la gem)
+Voir son profil, et pas celui d'un autre (renvoie à une erreur si l'id d'un user n'existe pas)
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Partie event:
+Création event
+Voir la page d'un event avec plus de détails
+(compteur de participants et date de fin d'event)

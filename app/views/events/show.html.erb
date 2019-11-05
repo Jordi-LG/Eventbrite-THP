@@ -1,4 +1,12 @@
-<% flash[:success] %>
+<!-- MESSAGE SI CONNEXION RÉUSSIE -->
+<% if flash[:success] %>
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+   <h2>Ton event à bien été enregistré ! </h2>
+   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+     <span aria-hidden="true">&times;</span>
+   </button>
+ </div>
+<% end %>
 
 <div class='container mt-4'>
   <br>
@@ -7,19 +15,18 @@
   <br>
   <div class= 'border border-white mt-4 pt-4 pl-2' style="max-width: 50rem; font-size: 18px;">
     <p>
-      <u>Date de début</u>: <%= @event.start_date %><br>
-      <u>Description</u>: <%= @event.description %><br>
-      <u>Prix</u>: <%= @event.price %><br>
-      <u>Nombre d'inscrits</u>: <br>
-      <u>Créateur de l'Event</u>: <%= User.find(@event.admin_id).first_name %><br>
-      <u>Date de fin</u>:<br>
+      <u>Date de début</u>: <%= @event.start_date.strftime('%d of %B, %Y - %HH%M') %><br>
+      <u>Date de fin</u>: <%= @end_date %><br>
+      <u>Créateur de l'Event</u>: <%= User.find(@event.admin_id).email %><br>
       <u>Lieu de l'Event</u>: <%= @event.location %><br>
+      <u>Description</u>: <%= @event.description %><br>
+      <u>Prix</u>: <%= @event.price%> €<br>
+      <!-- Methode count en private pour le nombre d'inscrits -->
+      <u>Nombre d'inscrits</u>: <%= @count %><br>
+
 
     </p>
 
   </div>
-  <%= link_to edit_user_registration_path do %>
-<button type="button" class="btn btn-warning mt-4">Edit Password / Mail </button>
-<% end %>
 </div>
 <br>

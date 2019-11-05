@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  #INACESSIBLE SUR CES PAGES SI PAS CONNECTÉ
   before_action :authenticate_user!, only: [:new, :create]
 
   def index
@@ -14,11 +15,6 @@ class EventsController < ApplicationController
     @event = Event.new(params_event)
     @event.admin_id = current_user.id
 
-    puts "*" *60
-    puts current_user.id
-    puts "*" * 60
-    puts @event.id
-
     if @event.save
       redirect_to event_path(@event.id)
       flash[:success]= "Ton évenement a bien été créé !"
@@ -26,17 +22,28 @@ class EventsController < ApplicationController
       render new_event_path
   end
 
-  puts "*" * 60
-  puts @event.errors.messages
 end
   def show
     @event = Event.find(params[:id])
+    @count = count
+    @end_date = end_date
   end
 
 private
-
+  #INFOS RECUPERER DE LA CRÉATION D'EVENT
   def params_event
       params.require(:event).permit(:start_date, :duration, :title, :price, :description, :location)
+  end
+
+  #NOMBRE DE USER INSCRIT À L'EVENT
+  def count
+    Event.find(params[:id]).users.all.count
+  end
+
+  #CALCUL DE LA DATE DE FIN, IL FAUT PASSER LA DURATION EN MINUTES
+  def end_date
+    minutes = Event.find(params[:id]).duration * 60
+    (Event.find(params[:id]).start_date + minutes).strftime('%d of %B, %Y - %HH%M')
   end
 
 end
