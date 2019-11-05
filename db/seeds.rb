@@ -16,7 +16,7 @@ ActiveRecord::Base.connection.reset_pk_sequence!('users')
  #commande pour reset l'id
 
 5.times do
-  u = User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, description: Faker::ChuckNorris.fact)
+  u = User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, description: Faker::ChuckNorris.fact, password: '123456')
   u.email = u.first_name + '_' + u.last_name + '@mail.com'
   u.save
 end

@@ -1,0 +1,26 @@
+<div class="Sign_Form">
+  <h1>Sign Up</h1>
+  <!-- FORMULAIRE DE CRÉATION D'UN UTILISATEUR -->
+  <%= form_with model: @event, local: true do |f| %>
+    <p> Date de début :</br> <%= f.datetime_local_field :start_date%> </p>
+    <p> Durée :</br> <%= f.text_field :duration%> </p>
+    <p> Description :</br> <%= f.text_field :description%> </p>
+    <p> Titre :</br> <%= f.text_field :title%> </p>
+    <p> Prix d'entrée :</br> <%= f.text_field :price%> </p>
+    <p> Lieu de l'Event :</br> <%= f.text_field :location%></p>
+    <%= submit_tag('Signup') %>
+    <%end%>
+</div>
+
+<% if @event.errors.any? %>
+  <div class="alert alert-dismissible alert-warning">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <strong> Bah alors ?! </strong>
+  <p>Nous n'avons pas réussi à créer l'Event pour le/les raisons suivantes :</p>
+  <ul>
+    <% @event.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>

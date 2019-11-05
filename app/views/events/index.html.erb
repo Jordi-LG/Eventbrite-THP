@@ -1,2 +1,43 @@
-<h1>Events#index</h1>
-<p>Find me in app/views/events/index.html.erb</p>
+<center>
+<div class="jumbotron">
+  <br><br><br>
+  <h1 class="display-1"><b>Eventbrite</b></h1>
+  <div><h1>Bienvenue sur notre site de plannification d'évenements !</h1></div>
+    <h4 class="display-6">(Façon THP)</h4>
+</div>
+<% if flash[:danger] %>
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <h3><%= flash[:danger] %></h3>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+<% end %>
+
+<div><h2>Voici la liste des événements à venir</h2></div>
+<br>
+
+<div>
+  <div class="card-columns">
+    <!-- APPELLE DE CHAQUE ELEMENT DU TABLEAU EVENT -->
+    <% @event.sort.each do |event| %>
+
+    <!-- link_to POUR QUE TOUTE LA CARTE DEVIENNE UN LIEN -->
+      <%= link_to event_path(event) do%>
+
+      <div class="card border-primary mb-3 bg-light" style="max-width: 20rem;">
+        <div class="card-body">
+
+    <!-- AFFICHAGE DU TITRE, LIÉ À SA PAGE show -->
+          <h2 class="card-title text-dark">  <%= event.title%></h2>
+
+    <!-- AFFICHAGE DE LA DESCRIPTION DE L'EVENT -->
+          <h5 class="card-text text-success">    <%= event.description %></h5>
+        </div>
+      </div>
+    <%end%>
+    <% end %>
+  </div>
+</div>
+
+</center>

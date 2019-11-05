@@ -1,0 +1,25 @@
+<% flash[:success] %>
+
+<div class='container mt-4'>
+  <br>
+  <h1><%= @event.title %></h1>
+  <!-- INFORMATION SUR L'UTILISATEUR -->
+  <br>
+  <div class= 'border border-white mt-4 pt-4 pl-2' style="max-width: 50rem; font-size: 18px;">
+    <p>
+      <u>Date de début</u>: <%= @event.start_date %><br>
+      <u>Description</u>: <%= @event.description %><br>
+      <u>Prix</u>: <%= @event.price %><br>
+      <u>Nombre d'inscrits</u>: <br>
+      <u>Créateur de l'Event</u>: <%= User.find(@event.admin_id).first_name %><br>
+      <u>Date de fin</u>:<br>
+      <u>Lieu de l'Event</u>: <%= @event.location %><br>
+
+    </p>
+
+  </div>
+  <%= link_to edit_user_registration_path do %>
+<button type="button" class="btn btn-warning mt-4">Edit Password / Mail </button>
+<% end %>
+</div>
+<br>

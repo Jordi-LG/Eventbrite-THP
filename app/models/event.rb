@@ -30,14 +30,18 @@ class Event < ApplicationRecord
 
 
     def time_in_futur
+      if start_date != nil
       if Time.now > start_date
         errors.add(:start_date, "date de départ peut pas être passée !")
       end
     end
+    end
 
     def multiple_of_5
+      if duration != nil
       if duration % 5 != 0
         errors.add(:duration, "durée doit être multiple de 5")
       end
+    end
     end
 end
