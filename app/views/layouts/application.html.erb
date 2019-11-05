@@ -29,19 +29,19 @@
         <a class="nav-link" href="#">Pricing</a>
       </li>
     </ul>
-    <!-- if current_user
+    <% if current_user %>
     <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
       <div class="btn-group" role="group">
-          <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">Connexion/Inscription</button>
+          <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">Mon profil</button>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <a class="dropdown-item" href="/users/show">Mon profil</a>
-            <a class="dropdown-item" href="/sessions/destroy" data-method="delete">Déconnexion</a>
+            <a class="dropdown-item" href="/users/sign_out" data-method="delete">Déconnexion</a>
           </div>
       </div>
-    </div> -->
+    </div>
 
     <!-- SI UTILISATEUR NON CONNECTÉ, ON AFFICHE UNE DROPDOWN -->
-    <!--else-->
+    <% else %>
       <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
         <div class="btn-group" role="group">
             <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">Connexion/Inscription</button>
@@ -51,8 +51,7 @@
             </div>
         </div>
       </div>
-    <!-- end -->
-    </ul>
+    <% end %>
   </div>
 </nav>
 
