@@ -67,3 +67,5 @@ gem "letter_opener", "~> 1.7"
 gem "dotenv-rails"
 
 gem "devise", "~> 4.7"
+
+gem "stripe", "~> 5.8"

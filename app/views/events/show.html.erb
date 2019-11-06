@@ -8,6 +8,15 @@
  </div>
 <% end %>
 
+<% if flash[:success2] %>
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+   <h2>Ton event à bien été enregistré ! </h2>
+   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+     <span aria-hidden="true">&times;</span>
+   </button>
+ </div>
+<% end %>
+
 <div class='container mt-4'>
   <br>
   <h1><%= @event.title %></h1>
@@ -23,10 +32,20 @@
       <u>Prix</u>: <%= @event.price%> €<br>
       <!-- Methode count en private pour le nombre d'inscrits -->
       <u>Nombre d'inscrits</u>: <%= @count %><br>
-
-
     </p>
-
+  </div>
+  <div>
+    <br>
+    <% if current_user %>
+      <% if current_user.id != @event.admin_id %>
+      <% if @participated.include? current_user.id %>
+      <%else%>
+        <%= link_to new_event_attendance_path(params['id']) do %>
+          <button type="button" class="btn btn-success">Participer à l'évenement</button>
+        <% end %>
+      <% end %>
+      <%end%>
+    <% end %>
   </div>
 </div>
 <br>

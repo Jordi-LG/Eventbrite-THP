@@ -27,6 +27,7 @@ end
     @event = Event.find(params[:id])
     @count = count
     @end_date = end_date
+    @participated = participated?
   end
 
 private
@@ -44,6 +45,10 @@ private
   def end_date
     minutes = Event.find(params[:id]).duration * 60
     (Event.find(params[:id]).start_date + minutes).strftime('%d of %B, %Y - %HH%M')
+  end
+
+  def participated?
+    Event.find(params['id']).users.ids
   end
 
 end
