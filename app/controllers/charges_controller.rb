@@ -19,18 +19,13 @@ class ChargesController < ApplicationController
     })
 
 
-        @attendance = Attendance.new()
-        puts "*" * 60
-        puts @attendance
-        puts params
-        puts charge.customer
-        puts "*" * 60
+        @attendance = Attendance.new
         @attendance.user_id = current_user.id
         @attendance.event_id = Event.find(params['event_id']).id
         @attendance.stripe_customer_id = charge.customer
 
     if @attendance.save
-      render event_path(id: params['event_id'])
+      redirect_to event_path(id: params['event_id'])
       flash[:success]= "Ta participation est enregistrée !"
     else
       render new_event_charge_path
