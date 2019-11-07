@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     resources :charges
     resources :attendances
   end
-  resources :users, only: [:show]
+  resources :users, only: [:show] do
+    resources :avatars, only: [:create]
+  end
 
 end

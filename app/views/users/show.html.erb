@@ -3,6 +3,11 @@
   <h1>Mon profil</h1>
   <!-- INFORMATION SUR L'UTILISATEUR -->
   <br>
+
+  <%if @user.avatar.attached?%>
+    <%= image_tag @user.avatar, alt: 'avatar' %>
+  <%else%>
+    <%= avatar_for(current_user) %>  <%end%>
   <div class= 'border border-white mt-4 pt-4 pl-2' style="max-width: 50rem; font-size: 18px;">
     <p>
       <u>Prénom</u>: <%= @user.first_name %><br>
@@ -10,6 +15,10 @@
       <u>Description</u>: <%= @user.description %><br>
       <u>Email</u>: <%= @user.email %><br>
     </p>
+    <%= form_tag user_avatars_path(@user), multipart: true do %>
+      <%= file_field_tag :avatar %>
+      <%= submit_tag "mettre à jour" %>
+    <% end %>
 
   </div>
   <%= link_to edit_user_registration_path do %>

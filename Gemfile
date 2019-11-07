@@ -71,3 +71,5 @@ gem "devise", "~> 4.7"
 gem "stripe", "~> 5.8"
 
 gem "yarn", "~> 0.1.1"
+
+gem "active_storage_validations", "~> 0.8.4"

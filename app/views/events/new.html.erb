@@ -12,6 +12,7 @@
     <p> Titre :</br> <%= f.text_field :title, class: "form-control"%> </p>
     <p> Prix d'entrée :</br> <%= f.text_field :price, class: "form-control"%> </p>
     <p> Lieu de l'Event :</br> <%= f.text_field :location, class: "form-control"%></p>
+    <p> Image de l'event:</br>  <%= f.file_field :avatar, class: "form-control" %></p>
     <div class="actions mt-5">
       <%= f.submit "Submit", class: "btn btn-lg btn-primary btn-block" %>
     </div>

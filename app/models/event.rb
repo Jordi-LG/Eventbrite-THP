@@ -2,6 +2,8 @@ class Event < ApplicationRecord
   has_many :attendances
   has_many :users, through: :attendances
   belongs_to :admin, class_name: 'User'
+  has_one_attached :avatar
+
 
   validates :start_date,
     presence: true
@@ -24,10 +26,7 @@ class Event < ApplicationRecord
     presence: true,
     numericality: {only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 1000}
 
-    validates :location,
-    presence: true
-
-
+  validates :avatar, attached: true
 
     def time_in_futur
       if start_date != nil

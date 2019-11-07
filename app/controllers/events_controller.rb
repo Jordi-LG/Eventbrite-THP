@@ -33,7 +33,7 @@ end
 private
   #INFOS RECUPERER DE LA CRÉATION D'EVENT
   def params_event
-      params.require(:event).permit(:start_date, :duration, :title, :price, :description, :location)
+      params.require(:event).permit(:start_date, :duration, :title, :price, :description, :location, :avatar)
   end
 
   #NOMBRE DE USER INSCRIT À L'EVENT
