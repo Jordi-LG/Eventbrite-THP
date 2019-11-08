@@ -10,4 +10,10 @@ Rails.application.routes.draw do
     resources :avatars, only: [:create]
   end
 
+    namespace :admin do
+    root 'base#index'
+    resources :users, except: [:show]
+    resources :events
+  end
+
 end

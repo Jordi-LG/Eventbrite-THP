@@ -2,6 +2,8 @@ class UsersController < ApplicationController
   #EMPECHER LE USER D'ALLER SUR UNE AUTRE PAGE PROFIL QUE LA SIENNE
   before_action :authenticate_user!, :good_user
 
+  def index
+  end
 
   def show
     @user = User.find(current_user.id)

@@ -5,8 +5,8 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'front', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'front', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
@@ -21,6 +21,13 @@
       <li class="nav-item">
         <a class="nav-link" href="/events/new">Créer un event</a>
       </li>
+      <% if current_user %>
+        <% if current_user.admin? %>
+        <li class ="nav-item">
+          <%= link_to 'Dashboard', admin_root_path, class: 'nav-link'%>
+        </li>
+        <% end %>
+      <% end %>
 
     </ul>
     <% if current_user %>

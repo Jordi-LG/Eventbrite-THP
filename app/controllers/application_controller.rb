@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  include ApplicationHelper
+
 
   before_action :configure_devise_parameters, if: :devise_controller?
   #AUTORISER LA MODIFICATION DU FORMULAIRE DE LA GEM DEVISE

@@ -13,5 +13,5 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
-//= require jquery
-//= require bootstrap.bundle
+//= require front/jquery
+//= require front/bootstrap.bundle
